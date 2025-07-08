@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Kanban Board</h2>
+    <h3 id="welcome"></h3>
+    <button onclick="logout()">Logout</button>
+    
+    <div id="board">
+        <div class="column" id="todo"><h3>To Do</h3></div>
+        <div class="column" id="in-progress"><h3>In Progress</h3></div>
+        <div class="column" id="done"><h3>Done</h3></div>
+    </div>
+
+    <input type="text" id="taskInput" placeholder="Add a new task">
+    <button onclick="addTask()">Add Task</button>
+
+    <script src="script.js"></script>
+    <script>
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        }
+
+        const username = getCookie("username");
+        if (!username) {
+            window.location.href = "login.html";
+        } else {
+            document.getElementById("welcome").innerText = "مرحبًا، " + username;
+        }
+
+        function logout() {
+            window.location.href = "logout.php";
+        }
+    </script>
+</body>
+</html>
+
